@@ -1,4 +1,4 @@
-<script lang="ts"> 
+<script lang="ts">
 import { useShoppingStore } from "../../stores/ShoppingStore";
 export default {
   name: "Buttons",
@@ -12,11 +12,10 @@ export default {
       type: Number,
       required: true,
       default: 0,
-    }
+    },
   },
   setup(props) {
     const ShoppingStore = useShoppingStore();
- 
 
     const addProduct = () => {
       ShoppingStore.addProduct(props.id);
@@ -27,7 +26,7 @@ export default {
 
     return {
       addProduct,
-      deleteOneProduct, 
+      deleteOneProduct,
     };
   },
 };
@@ -37,14 +36,14 @@ export default {
   <div class="text-black flex gap-4 buttons">
     <div
       @click="addProduct"
-      class="border rounded-full w-8 h-8 flex items-center justify-center button"
+      class="border rounded-full w-8 h-8 flex items-center justify-center cursor-pointer button"
     >
       +
     </div>
-    <div class="flex items-center justify-center counted">{{ quantity }}</div>
+    <div class="flex items-center w-8 justify-center counted">{{ quantity }}</div>
     <div
       @click="deleteOneProduct"
-      class="border rounded-full w-8 h-8 flex items-center justify-center button"
+      class="border rounded-full w-8 h-8 flex items-center justify-center cursor-pointer button"
     >
       -
     </div>
