@@ -32,6 +32,6 @@
 
 <script lang="ts">
 export default {
-  name: "SpinComponent",
+  name: "LoadingComponent",
 };
 </script>

@@ -1,28 +1,28 @@
 <template>
-  <div v-if="Product" class="p-4 h-40 max-w-lg border rounded flex product__cart">
+  <SimpleLoadingComponent v-if="loading" />
+  <div v-else class="p-4 h-40 max-w-lg border rounded flex product__cart">
     <div class="w-2/5 flex items-center image">
-      <img class="w-full h-fit m-auto" :src="Product.pictures[0]" alt="Image " />
+      <img class="w-full h-fit m-auto" :src="Product?.pictures[0]" alt="Image " />
     </div>
     <div class="w-2/5 flex flex-col description">
       <span
         class="font-bold text-black w-full h-14 overflow-hidden text-ellipsis line-clamp name"
       >
-        {{ Product.name }}
+        {{ Product?.name }}
       </span>
       <div class="price">
         <div class="flex gap-2 discount">
-          <span class="text-gray-500 line-through"> ${{ Product.price }} </span>
+          <span class="text-gray-500 line-through"> ${{ Product?.price }} </span>
           <span
             class="text-white rounded bg-black px-2 h-6 flex items-center justify-center text-xs"
           >
-            {{ Product.discount }}% OFF
+            {{ Product?.discount }}% OFF
           </span>
         </div>
         <span class="text-black font-bold"> ${{ discount }} </span>
       </div>
 
-      <buttons :id="Product.id"/>
-       
+      <buttons :id="Product?.id" />
     </div>
     <div class="w-1/5 flex flex-col justify-start items-end delete">
       <div @click="deleteProduct" class="w-5 h-fit cursor-pointer icon">
@@ -43,12 +43,14 @@
 
 <script lang="ts">
 import { computed, ref, watchEffect } from "vue";
-import API from "../../netwotk/client";
+import { DetailProduct } from "../../../domain/models/Product";
+
 import { useShoppingStore } from "../../stores/ShoppingStore";
-import { ProductAPI } from "../interfaces/Product";
 import Buttons from "./Buttons.vue";
+import { productService } from "../../../domain/services/Product.service";  
+import SimpleLoadingComponent from '../Spinners/SimpleLoadingComponent.vue' 
 export default {
-  components: { Buttons },
+  components: { Buttons, SimpleLoadingComponent },
   name: "ProductCard",
   props: {
     id: {
@@ -62,13 +64,13 @@ export default {
   },
   setup(props) {
     const ShoppingStore = useShoppingStore();
-    let Product = ref<ProductAPI>();
+    let Product = ref<DetailProduct>();
+    let loading = ref(true);
 
     const getProductById = async () => {
-      let productSearched = await API.product.productById(props.id);
-
-      if (productSearched) {
-        Product.value = productSearched;
+      Product.value = await productService.getProductById(props.id);
+      if (Product.value) {
+        loading.value = false;
       }
     };
 
@@ -99,6 +101,7 @@ export default {
       Product,
       deleteProduct,
       discount,
+      loading,
     };
   },
 };

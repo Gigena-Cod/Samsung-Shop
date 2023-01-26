@@ -8,7 +8,7 @@
           height="29"
           viewBox="0 0 29 29"
           alt="cart"
-          class="w-10 h-fit text-white"
+          class="w-10 h-fit text-dark"
         >
           <g fill="none" fill-rule="evenodd">
             <g fill="currentcolor">

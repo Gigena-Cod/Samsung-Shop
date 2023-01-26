@@ -4,14 +4,14 @@ import { useRoute } from "vue-router";
 import { DetailProduct } from "../../domain/models/Product";
 import { productService } from "../../domain/services/Product.service";
 
-import SpinComponent from "../components/SpinComponent.vue";
+import LoadingComponent from "../components/Spinners/LoadingComponent.vue";
 import Gallery from "../components/DetailProduct/Gallery.vue";
 import Information from "../components/DetailProduct/Information.vue"
 
 export default {
   name: "DetailProductView",
   components: {
-    SpinComponent,
+    LoadingComponent,
     Gallery,
     Information,
   },
@@ -50,7 +50,7 @@ export default {
 
 <template>
   <div class="w-full p-4 detail__view">
-    <SpinComponent v-if="loading" />
+    <LoadingComponent v-if="loading" />
     <div
       v-else
       class="mx-auto w-full max-w-screen-2xl grid grid-cols-1 lg:grid-cols-5 gap-16 home__content"
