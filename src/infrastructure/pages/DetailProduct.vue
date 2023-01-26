@@ -6,7 +6,7 @@ import { productService } from "../../domain/services/Product.service";
 
 import LoadingComponent from "../components/Spinners/LoadingComponent.vue";
 import Gallery from "../components/DetailProduct/Gallery.vue";
-import Information from "../components/DetailProduct/Information.vue"
+import Information from "../components/DetailProduct/Information.vue";
 
 export default {
   name: "DetailProductView",
@@ -67,9 +67,9 @@ export default {
           <span class="text-xl"> ${{ Product?.price }} </span>
           <RouterLink
             to="/"
-            class="h-10 cursor-pointer rounded-full flex items-center bg-[#2189FF] px-4 buy__button"
+            class="h-10 cursor-pointer rounded flex items-center bg-[#2189FF] px-4 buy__button"
           >
-            VOLVER
+            Regresar
           </RouterLink>
         </div>
       </div>

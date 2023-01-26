@@ -21,7 +21,7 @@
       </div>
       <div
         v-if="!isEmpty"
-        class="absolute top-0 right-0 flex items-center justify-center rounded-full w-5 h-5 text-xs bg-[#2189FF] border border-white count"
+        class="absolute top-0 right-0 text-white flex items-center justify-center rounded-full w-5 h-5 text-xs bg-[#2189FF] border border-white count"
       >
         {{ countProductsInCart }}
       </div>
@@ -128,7 +128,7 @@ export default {
 
     const redirectToCartPage = () => {
       toggleShow();
-      router.push({ name: "Cart" });
+      router.push({ name: "cart" });
     };
     return {
       isEmpty,

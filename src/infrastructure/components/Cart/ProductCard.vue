@@ -22,7 +22,7 @@
         <span class="text-black font-bold"> ${{ discount }} </span>
       </div>
 
-      <buttons :id="Product?.id" />
+      <buttons :quantity="quantity" :id="Product?.id" />
     </div>
     <div class="w-1/5 flex flex-col justify-start items-end delete">
       <div @click="deleteProduct" class="w-5 h-fit cursor-pointer icon">
@@ -73,13 +73,7 @@ export default {
         loading.value = false;
       }
     };
-
-    const addToCart = () => {
-      ShoppingStore.addProduct(props.id);
-    };
-    const deleteOneProduct = () => {
-      ShoppingStore.deleteOneProduct(props.id);
-    };
+    
     const deleteProduct = () => {
       ShoppingStore.deleteProduct(props.id);
     };

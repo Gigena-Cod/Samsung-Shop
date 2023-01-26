@@ -1,5 +1,4 @@
-<script lang="ts">
-import { computed } from "@vue/runtime-core";
+<script lang="ts"> 
 import { useShoppingStore } from "../../stores/ShoppingStore";
 export default {
   name: "Buttons",
@@ -9,11 +8,15 @@ export default {
       required: true,
       default: "",
     },
+    quantity: {
+      type: Number,
+      required: true,
+      default: 0,
+    }
   },
   setup(props) {
     const ShoppingStore = useShoppingStore();
-
-    const Quantity = computed(() => ShoppingStore.getProductById(props.id));
+ 
 
     const addProduct = () => {
       ShoppingStore.addProduct(props.id);
@@ -24,8 +27,7 @@ export default {
 
     return {
       addProduct,
-      deleteOneProduct,
-      Quantity,
+      deleteOneProduct, 
     };
   },
 };
@@ -39,7 +41,7 @@ export default {
     >
       +
     </div>
-    <div class="flex items-center justify-center counted">{{ Quantity }}</div>
+    <div class="flex items-center justify-center counted">{{ quantity }}</div>
     <div
       @click="deleteOneProduct"
       class="border rounded-full w-8 h-8 flex items-center justify-center button"

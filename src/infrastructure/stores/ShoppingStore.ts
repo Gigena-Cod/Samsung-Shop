@@ -1,22 +1,21 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-import { ProductCart } from "../components/interfaces/Product";
+import { ProductCart } from "../../domain/models/Product";
 
 export const useShoppingStore = defineStore("shopCart", () => {
   // STATE
-  const products = ref<ReadonlyArray<ProductCart>>([]);
+  const products = ref<ReadonlyArray<ProductCart>>([
+    {
+      id: "af9fdf4a-9511-11ed-a1eb-0242ac120002",
+      quantity: 1,
+    },
+  ]);
   const showCart = ref<boolean>(false);
 
   // GETTERS
   const getShowCart = computed(() => showCart.value);
   const getProducts = computed(() => products.value);
-  const getProductById = (productId: string) => {
-    let productSearched = products.value.find(
-      (product: ProductCart) => productId === product.id
-    );
-    
-    return productSearched?.quantity;
-  };
+
   const getQuantityProducts = computed(() => products.value.length);
 
   // ACTIONS
@@ -82,7 +81,6 @@ export const useShoppingStore = defineStore("shopCart", () => {
   return {
     getShowCart,
     getProducts,
-    getProductById,
     getQuantityProducts,
     toggleShowCart,
     addProduct,

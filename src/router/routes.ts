@@ -1,7 +1,7 @@
 const PAGEPATH = {
   HOME: "../infrastructure/pages/Home.vue",
   DETAIL_PRODUCT: "../infrastructure/pages/DetailProduct.vue",
-  CART: ".../infrastructure/pages/Cart.vue",
+  CART: "../infrastructure/pages/Cart.vue",
 }; 
 const routes = [
   {

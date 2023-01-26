@@ -7,6 +7,11 @@ export type Product = {
   discount: number;
   picture: string;
 };
+
+export type ProductCart = {
+  id: string;
+  quantity: number;
+};
 export type DetailProduct = {
   id: string;
   name: string;
