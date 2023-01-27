@@ -25,7 +25,7 @@
       <buttons :quantity="quantity" :id="Product?.id" />
     </div>
     <div class="w-1/5 flex flex-col justify-start items-end delete">
-      <div @click="deleteProduct" class="w-5 h-fit cursor-pointer icon">
+      <div @click="deleteProduct()" class="w-5 h-fit cursor-pointer icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 14 17"

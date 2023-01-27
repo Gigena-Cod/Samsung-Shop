@@ -1,10 +1,12 @@
 <script lang="ts">
+import ModalComponent from "../components/ModalComponent.vue";
 import ProductList from "../components/Products/ProductList.vue";
 
 export default {
-  components: { ProductList },
+  components: { ProductList, ModalComponent },
   name: "HomeView",
-  setup() {},
+  setup() {   
+  },
 };
 </script>
 

@@ -2,12 +2,14 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { ProductCart } from "../../domain/models/Product";
 import { productService } from "../../domain/services/Product.service";
+import { useNotification } from "./NotificationStore";
 
 export const useShoppingStore = defineStore("shopCart", () => {
   // STATE
   const products = ref<ReadonlyArray<ProductCart>>([]);
   const showCart = ref<boolean>(false);
   const totalAmount = ref<number>(0);
+  const Notifications = useNotification();
 
   // GETTERS
   const getTotalAmount = computed(() => totalAmount.value);
@@ -33,6 +35,7 @@ export const useShoppingStore = defineStore("shopCart", () => {
       };
       updateTotalAmount();
       products.value = [...products.value, newProduct];
+      
       return;
     }
 
@@ -49,23 +52,23 @@ export const useShoppingStore = defineStore("shopCart", () => {
   const deleteProduct = (productId: string) => {
     products.value = products.value.filter(
       (product: ProductCart) => product.id !== productId
-    );
-    updateTotalAmount();
-  };
+      );
+      updateTotalAmount();
+    };
 
   const deleteOneProduct = (productId: string) => {
     const index = products.value.findIndex((product: ProductCart) => {
       if (product.id === productId) return true;
     });
-
+    
     if (products.value[index].quantity === 1) {
       products.value = products.value.filter(
         (product: ProductCart) => product.id !== productId
-      );
+        );
       updateTotalAmount();
       return;
     }
-
+    
     products.value.map((product: ProductCart) => {
       if (product.id === productId) {
         product.quantity -= 1;
@@ -74,18 +77,19 @@ export const useShoppingStore = defineStore("shopCart", () => {
       }
     });
   };
-
+  
   const deleteAllProduct = () => {
     products.value = [];
+    Notifications.activePopup();
     updateTotalAmount();
   };
-
+  
   const updateTotalAmount = async () => {
     if (products.value.length === 0) {
       totalAmount.value = 0;
       return;
     }
-
+    
     let sum = 0;
     products.value.map(async (Product: ProductCart) => {
       productService
@@ -98,11 +102,11 @@ export const useShoppingStore = defineStore("shopCart", () => {
         .finally(() => {
           totalAmount.value = sum;
         });
-    });
-  };
-
-  return {
-    getShowCart,
+      });
+    };
+    
+    return {
+      getShowCart,
     getTotalAmount,
     getProducts,
     getQuantityProducts,

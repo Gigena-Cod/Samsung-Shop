@@ -34,7 +34,6 @@ export default {
     const ShoppingStore = useShoppingStore();
 
     const finalizePurchase = () => {
-      alert("Gracias por tu compra");
       ShoppingStore.deleteAllProduct();
       setTimeout(() => {
         route.push("/");

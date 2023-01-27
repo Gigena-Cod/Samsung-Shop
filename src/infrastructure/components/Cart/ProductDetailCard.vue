@@ -23,6 +23,7 @@
       </div>
 
       <div
+        @click="deleteProduct()"
         class="col-span-1 w-full flex justify-end lg:items-center lg:h-full h-fit cursor-pointer deleteButton"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 17" class="w-fit h-6">
@@ -44,6 +45,7 @@ import { DetailProduct, ProductCart } from "../../../domain/models/Product";
 import { ref, watchEffect } from "vue";
 import { productService } from "../../../domain/services/Product.service";
 import SimpleLoadingComponent from "../Spinners/SimpleLoadingComponent.vue";
+import { useShoppingStore } from "../../stores/ShoppingStore";
 export default {
   name: "ProductDetailCard",
   components: { Buttons, SimpleLoadingComponent },
@@ -59,6 +61,7 @@ export default {
     },
   },
   setup(props) {
+    const ShoppingStore = useShoppingStore();
     let ProductData = ref<DetailProduct>();
     let loading = ref(true);
 
@@ -88,8 +91,12 @@ export default {
       return 0;
     });
 
+    const deleteProduct = () => {
+      if (ProductData.value) ShoppingStore.deleteProduct(ProductData.value.id);
+    };
     return {
       currencyMoney,
+      deleteProduct,
       priceUpdated,
       ProductData,
       loading,

@@ -53,6 +53,7 @@
       ></product-card>
 
       <div
+        @click="redirectToCartPage"
         v-if="countProductsInCart > 2"
         class="rounded font-bold px-4 py-1 text-black text-center border-2 cursor-pointer border-[#2189FF] button show_more"
       >
@@ -82,12 +83,13 @@
         <div class="flex flex-wrap gap-2 text-black description">
           <span class="text-lg"> Tu carrito esta vacio </span>
           <span>Descubrí las categorías del sitio y elegí los mejores productos.</span>
-          <div
+          <router-link
+            to="/"
             @click="toggleShow"
             class="rounded font-bold px-4 py-1 border-2 cursor-pointer border-[#2189FF] button"
           >
             SEGUI COMPRANDO
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
