@@ -14,6 +14,8 @@ npm install
 npm run dev
 ```
 ## Simular Backend con JSON Server
+```
 npm run serve
+``` 
 
 ### [Web](https://jemersoft-challenge.onrender.com/#/)  [Linkedin](https://www.linkedin.com/in/gigena-christian/)

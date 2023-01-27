@@ -25,7 +25,7 @@ export const productRepository = {
       "http://localhost:3000/products"
     );
 
-    return products.find((productDto): DetailProduct => {
+    return products.find((productDto): DetailProduct | undefined => {
       if (productDto.id === productId)
         return {
           id: productDto.id,
