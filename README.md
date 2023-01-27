@@ -18,4 +18,4 @@ npm run dev
 npm run serve
 ``` 
 
-### [Web](https://jemersoft-challenge.onrender.com/#/)  [Linkedin](https://www.linkedin.com/in/gigena-christian/)
+### [Linkedin](https://www.linkedin.com/in/gigena-christian/)
