@@ -1,6 +1,6 @@
 # Samsung Shop
 
-Sitio web, desarrollado con el objetivo practivo de desarrollar una arquitectura limpia y hexagonal. Se utilizo como framework VueJs 3, para manejar el store Pinia,
+Sitio web, desarrollado con el objetivo de desarrollar una arquitectura limpia y hexagonal. Se utilizo como framework VueJs 3, para manejar el store Pinia y framework de estilso TailwindCSS
 
 # Para iniciar el Proyecto 
 
