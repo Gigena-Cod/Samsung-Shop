@@ -1,4 +1,4 @@
-# SAMSUNG SHOP
+# Samsung Shop
 
 Sitio web, desarrollado con el objetivo practivo de desarrollar una arquitectura limpia y hexagonal. Se utilizo como framework VueJs 3, para manejar el store Pinia,
 
@@ -17,9 +17,3 @@ npm run dev
 npm run serve
 
 ### [Web](https://jemersoft-challenge.onrender.com/#/)  [Linkedin](https://www.linkedin.com/in/gigena-christian/)
-
-
-
-
-
-
